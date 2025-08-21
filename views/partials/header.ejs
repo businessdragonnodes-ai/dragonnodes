@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> | DragonNodes</title> <!-- Changed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="/" class="logo">Dragon<span>Node</span></a> <!-- Changed -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+<!-- NEW/UPDATED SECTION -->
+<div class="header-auth">
+    <% if (user) { %>
+        <a href="/logout" class="btn btn-secondary">Logout</a>
+        <a href="/dashboard" class="btn btn-primary">Dashboard</a>
+    <% } else { %>
+        <a href="/login" class="btn btn-secondary">Login</a>
+        <a href="/register" class="btn btn-primary">Register</a>
+    <% } %>
+</div>
+        </div>
+    </header>
+    <main>
