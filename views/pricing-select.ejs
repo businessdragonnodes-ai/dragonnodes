@@ -1,0 +1,40 @@
+<!-- views/pricing-select.ejs -->
+<%- include('partials/header') %>
+
+<section class="page-title">
+    <div class="container">
+        <h1>Choose Your Game Server</h1>
+        <p>Select a game to view our high-performance hosting plans.</p>
+    </div>
+</section>
+
+<section class="game-selector">
+    <div class="container">
+        <div class="game-select-grid">
+            <!-- Minecraft Card -->
+            <a href="/pricing/minecraft_budget" class="game-card">
+                <!-- Replace with a good Minecraft image URL -->
+                <img src="/images/minecraft.png" alt="Minecraft Server Hosting">
+                <h3>Minecraft Servers</h3>
+            </a>
+
+            <!-- CS:GO Card -->
+            <a href="/pricing/minecraft_plans" class="game-card">
+                <!-- Replace with a good CS:GO image URL -->
+                <img src="https://tse4.mm.bing.net/th/id/OIP.4DTFm87FSJeMe_7rydeImAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="CS:GO Server Hosting">
+                <h3>Minecraft Plans</h3>
+            </a>
+
+            <!-- FiveM Card -->
+            <a href="/pricing/offers" class="game-card">
+                 <!-- Replace with a good FiveM/GTA image URL -->
+                <img src="" alt="Minecraft Offers">
+                <h3>Special Offers</h3>
+            </a>
+
+             <!-- Add more game cards here following the same pattern -->
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

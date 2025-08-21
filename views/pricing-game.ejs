@@ -1,0 +1,44 @@
+<!-- views/pricing-game.ejs -->
+<%- include('partials/header') %>
+
+<section class="page-title">
+    <div class="container">
+        <h1><%= gameTitle %> Hosting Plans</h1>
+        <p>Simple, transparent pricing. Upgrade or downgrade anytime.</p>
+    </div>
+</section>
+
+<section class="pricing">
+    <div class="container">
+        <div class="pricing-grid">
+            
+            <!-- This is a dynamic loop. It will create a card for each plan we defined in server.js -->
+            <% plans.forEach(plan => { %>
+
+                <div class="pricing-card <%= plan.popular ? 'popular' : '' %>">
+                    
+                    <% if (plan.popular) { %>
+                        <span class="popular-badge">Most Popular</span>
+                    <% } %>
+
+                    <h2><%= plan.name %></h2>
+
+                    <div class="price"><sup>₹</sup><%= plan.price %><span>/mo</span></div>
+                    
+                    <ul>
+                        <% plan.features.forEach(feature => { %>
+                            <li><%- feature %></li>
+                        <% }) %>
+                    </ul>
+                    
+                    <!-- THE CORRECTED LINE -->
+                    <a href="https://discord.gg/dyNxwwcaFh" target="_blank" class="btn <%= plan.popular ? 'btn-primary' : 'btn-secondary' %>">Order Now!</a>
+                </div>
+
+            <% }); %>
+
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

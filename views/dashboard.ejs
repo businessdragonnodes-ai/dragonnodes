@@ -1,0 +1,74 @@
+<%- include('partials/header') %>
+
+<section class="page-title">
+    <div class="container">
+        <h1>Client Dashboard</h1>
+        <p>Welcome back, <%= user.attributes.first_name %>! Manage your services below.</p>
+    </div>
+</section>
+
+<section class="dashboard-area">
+    <div class="container">
+        <div class="dashboard-grid">
+
+            <!-- Left Column: Account Info & Actions -->
+            <div class="dashboard-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Account Overview</h3>
+                    <div class="account-info">
+                        <p><strong>Username:</strong> <%= user.attributes.username %></p>
+                        <p><strong>Email:</strong> <%= user.attributes.email %></p>
+                        <p><strong>Client ID:</strong> <%= user.attributes.id %></p>
+                    </div>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Quick Actions</h3>
+                    <a href="/pricing" class="btn btn-primary btn-full">Order New Server</a>
+                    <a href="https://discord.gg/dyNxwwcaFh" target="_blank" class="btn btn-secondary btn-full">Get Support</a>
+                    <a href="/logout" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+
+            <!-- Right Column: Server List -->
+            <div class="server-list-container">
+                <h2>Your Servers</h2>
+
+                <% if (servers.length > 0) { %>
+                    <div class="server-list">
+                        <% servers.forEach(server => { %>
+                            <div class="server-card">
+                                <div class="server-card-header">
+                                    <div class="server-name">
+                                        <!-- Placeholder status dot. A real implementation would use websockets. -->
+                                        <span class="status-dot online"></span>
+                                        <h3><%= server.attributes.name %></h3>
+                                    </div>
+                                    <a href="<%= server.panel_url %>" target="_blank" class="btn btn-secondary">Manage</a>
+                                </div>
+                                <div class="server-card-body">
+                                    <div class="resource-info">
+                                        <span>CPU: <%= server.attributes.limits.cpu %>%</span>
+                                        <span>RAM: <%= server.attributes.limits.memory %> MB</span>
+                                        <span>DISK: <%= server.attributes.limits.disk %> MB</span>
+                                    </div>
+                                    <div class="server-id">
+                                        UUID: <%= server.attributes.uuidShort || server.attributes.uuid.split('-')[0] %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <div class="no-servers-card">
+                        <h3>You have no active servers.</h3>
+                        <p>Ready to start your next adventure? Let's get you set up.</p>
+                        <a href="/pricing" class="btn btn-primary">Browse Plans</a>
+                    </div>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
